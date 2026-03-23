@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  /* Warm Dusk Palette */
+  --cream:       #FDF6EE;
+  --cream-dark:  #F5E8D5;
+  --espresso:    #2C1810;
+  --espresso-mid:#4A2C1E;
+  --honey:       #D4874A;
+  --honey-light: #E8A96A;
+  --honey-dark:  #B06832;
+  --rose:        #E8A598;
+  --rose-dark:   #C07868;
+  --gold:        #C9A96E;
+  --gold-light:  #E0C898;
+  --sage:        #8A9E7A;
+  --ink:         #1A1008;
+  --muted:       #8B6E5A;
+  --border:      rgba(44,24,16,0.12);
+  --border-mid:  rgba(44,24,16,0.22);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Spacing */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  32px;
+  --space-xl:  64px;
+  --space-2xl: 96px;
+
+  /* Radius */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(44,24,16,0.08);
+  --shadow-md: 0 4px 20px rgba(44,24,16,0.12);
+  --shadow-lg: 0 12px 48px rgba(44,24,16,0.16);
+  --shadow-hover: 0 16px 60px rgba(44,24,16,0.22);
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4,0,0.2,1);
+  --ease-out: cubic-bezier(0,0,0.2,1);
+  --duration-fast: 150ms;
+  --duration-mid: 280ms;
+  --duration-slow: 500ms;
+
+  /* Z-index */
+  --z-dropdown: 100;
+  --z-sidebar:  200;
+  --z-modal:    300;
+  --z-toast:    400;
+  --z-navbar:   500;
+}

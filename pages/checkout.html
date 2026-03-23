@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Sweet Haven Bakery</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar__inner">
+    <a href="../index.html" class="navbar__logo">
+      <span class="navbar__logo-name">Sweet Haven</span>
+      <span class="navbar__logo-tag">Fresh from the Oven</span>
+    </a>
+    <div class="navbar__actions" style="margin-left:auto">
+      <a href="shop.html" class="btn btn--ghost btn--sm">← Continue Shopping</a>
+      <button class="navbar__cart-btn" onclick="openCart()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding:var(--space-lg) 0">
+  <h1>Checkout</h1>
+  <p>Almost there! Just a few details and your order is placed.</p>
+</div>
+
+<section class="section--sm">
+  <div class="container">
+    <form id="checkout-form">
+      <div class="checkout-layout">
+        <!-- Left: Form -->
+        <div>
+          <!-- Delivery Details -->
+          <div class="checkout-card">
+            <div class="checkout-card__title">
+              <div class="step-num">1</div> Delivery Details
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div class="form-group" style="grid-column:span 2">
+                <label class="form-label" for="co-name">Full Name *</label>
+                <input class="form-input" type="text" id="co-name" placeholder="Priya Sharma">
+                <div class="form-error" id="co-name-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="co-phone">Phone Number *</label>
+                <input class="form-input" type="tel" id="co-phone" placeholder="9876543210">
+                <div class="form-error" id="co-phone-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="co-email">Email (optional)</label>
+                <input class="form-input" type="email" id="co-email" placeholder="priya@email.com">
+              </div>
+              <div class="form-group" style="grid-column:span 2">
+                <label class="form-label" for="co-address">Delivery Address *</label>
+                <textarea class="form-textarea" id="co-address" placeholder="Flat no., Building name, Street, Locality…" rows="3"></textarea>
+                <div class="form-error" id="co-address-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="co-pincode">Pincode *</label>
+                <input class="form-input" type="text" id="co-pincode" placeholder="400050" maxlength="6">
+                <div class="form-error" id="co-pincode-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="co-notes">Delivery Notes</label>
+                <input class="form-input" type="text" id="co-notes" placeholder="Ring doorbell, leave at gate…">
+              </div>
+            </div>
+          </div>
+
+          <!-- Delivery Option -->
+          <div class="checkout-card">
+            <div class="checkout-card__title"><div class="step-num">2</div> Delivery Option</div>
+            <label class="delivery-option">
+              <input type="radio" name="delivery" value="home" checked>
+              <div class="delivery-option__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <div class="delivery-option__title">Home Delivery</div>
+                <div class="delivery-option__sub">30–45 minutes · ₹49 delivery fee</div>
+              </div>
+            </label>
+            <label class="delivery-option">
+              <input type="radio" name="delivery" value="pickup">
+              <div class="delivery-option__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="delivery-option__title">Store Pickup</div>
+                <div class="delivery-option__sub">Ready in 20 min · Free · Bandra West</div>
+              </div>
+            </label>
+
+            <div style="margin-top:16px;padding:14px;background:var(--cream-dark);border-radius:var(--r-md)">
+              <div style="font-size:13px;font-weight:500;margin-bottom:10px;color:var(--muted)">Or order via delivery platform</div>
+              <div style="display:flex;gap:10px">
+                <button type="button" class="btn btn--swiggy btn--sm" style="flex:1" onclick="openDeliveryModal('swiggy')">🛵 Order on Swiggy</button>
+                <button type="button" class="btn btn--zomato btn--sm" style="flex:1" onclick="openDeliveryModal('zomato')">🍽 Order on Zomato</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div class="checkout-card">
+            <div class="checkout-card__title"><div class="step-num">3</div> Payment</div>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="upi" checked>
+              <div style="font-size:20px">📱</div>
+              <div><div style="font-weight:500;font-size:14px">UPI</div><div style="font-size:12px;color:var(--muted)">GPay, PhonePe, Paytm, BHIM</div></div>
+            </label>
+            <div id="upi-field" style="padding:0 16px 14px">
+              <input class="form-input" type="text" placeholder="yourname@upi" style="max-width:300px">
+            </div>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="card">
+              <div style="font-size:20px">💳</div>
+              <div><div style="font-weight:500;font-size:14px">Credit / Debit Card</div><div style="font-size:12px;color:var(--muted)">Visa, Mastercard, RuPay</div></div>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="cod">
+              <div style="font-size:20px">💵</div>
+              <div><div style="font-weight:500;font-size:14px">Cash on Delivery</div><div style="font-size:12px;color:var(--muted)">Pay when your order arrives</div></div>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--full btn--lg" id="place-order-btn">
+            Place Order
+          </button>
+        </div>
+
+        <!-- Right: Order Summary -->
+        <div class="order-summary-box">
+          <div class="order-summary-box__title">Order Summary</div>
+          <div id="checkout-summary-items"></div>
+          <div class="summary-divider"></div>
+          <div class="cart-summary-row" style="font-size:14px;margin-bottom:8px"><span>Subtotal</span><span id="checkout-subtotal">₹0</span></div>
+          <div class="cart-summary-row" style="font-size:14px;margin-bottom:8px"><span>Delivery</span><span id="checkout-delivery">₹49</span></div>
+          <div class="cart-summary-row" style="font-size:14px;margin-bottom:8px"><span>GST (5%)</span><span id="checkout-tax">₹0</span></div>
+          <div class="summary-divider"></div>
+          <div class="cart-summary-row total"><span>Total</span><span id="checkout-total">₹0</span></div>
+          <div style="margin-top:16px;padding:12px;background:rgba(107,203,119,0.1);border-radius:var(--r-md);font-size:13px;color:#3a8a45;text-align:center">
+            ✓ Free cancellation up to 30 min after order
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-sidebar__header">
+    <div class="cart-sidebar__title">Your Cart 🛒</div>
+    <button class="cart-sidebar__close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-sidebar__body" id="cart-body"></div>
+  <div class="cart-sidebar__footer" id="cart-footer"></div>
+</div>
+
+<!-- Order Success Modal -->
+<div class="modal-overlay" id="success-overlay">
+  <div class="modal" style="max-width:460px">
+    <div class="order-success">
+      <div class="order-success__icon">🎉</div>
+      <div class="order-success__title">Order Placed!</div>
+      <div class="order-success__id"></div>
+      <div class="order-success__detail">
+        <div class="order-success__detail-item">
+          <div class="order-success__detail-label">Delivery Time</div>
+          <div class="order-success__detail-value" id="success-eta">—</div>
+        </div>
+        <div class="order-success__detail-item">
+          <div class="order-success__detail-label">Payment</div>
+          <div class="order-success__detail-value">Confirmed</div>
+        </div>
+      </div>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:24px">You'll receive a confirmation SMS. Track your order in real-time!</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <a href="track.html" class="btn btn--dark">Track Order</a>
+        <a href="../index.html" class="btn btn--outline">Back to Home</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Platform Modal -->
+<div class="modal-overlay" id="platform-overlay">
+  <div class="modal" style="max-width:400px"><div class="platform-modal"></div></div>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<script src="../js/data.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/checkout.js"></script>
+<script>
+Cart.load();
+// Toggle UPI field visibility
+document.querySelectorAll('[name=payment]').forEach(r => {
+  r.addEventListener('change', () => {
+    const upiField = document.getElementById('upi-field');
+    if (upiField) upiField.style.display = r.value === 'upi' && r.checked ? 'block' : 'none';
+  });
+});
+</script>
+</body>
+</html>

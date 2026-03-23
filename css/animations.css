@@ -1,0 +1,48 @@
+/* ── Keyframes ── */
+@keyframes fadeUp     { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn     { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideIn    { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes scaleIn    { from { opacity: 0; transform: scale(0.93); } to { opacity: 1; transform: scale(1); } }
+@keyframes bounceIn   { 0% { transform: scale(0); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+@keyframes spin       { to { transform: rotate(360deg); } }
+@keyframes pulse      { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes heroFloat  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+/* ── Scroll-reveal ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal--delay-1 { transition-delay: 0.1s; }
+.reveal--delay-2 { transition-delay: 0.2s; }
+.reveal--delay-3 { transition-delay: 0.3s; }
+.reveal--delay-4 { transition-delay: 0.4s; }
+
+/* ── Entrance animations ── */
+.fade-up    { animation: fadeUp  0.5s var(--ease) both; }
+.fade-in    { animation: fadeIn  0.4s var(--ease) both; }
+.scale-in   { animation: scaleIn 0.35s var(--ease) both; }
+.bounce-in  { animation: bounceIn 0.4s var(--ease) both; }
+
+/* ── Spinner ── */
+.spinner { width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
+
+/* ── Hover effects ── */
+.hover-lift { transition: transform var(--duration-mid) var(--ease), box-shadow var(--duration-mid) var(--ease); }
+.hover-lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+
+/* ── Hero parallax background ── */
+.hero-bg {
+  position: relative; overflow: hidden;
+}
+.hero-bg::before {
+  content: ''; position: absolute; inset: -20px;
+  background-image: inherit; background-size: cover; background-position: center;
+  animation: heroFloat 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* ── Active nav link underline draw ── */
+.nav-link-active { color: var(--espresso) !important; }
+.nav-link-active::after { width: 100% !important; }
+
+/* ── Image loading shimmer ── */
+img.loading { animation: pulse 1.2s ease-in-out infinite; background: var(--cream-dark); }

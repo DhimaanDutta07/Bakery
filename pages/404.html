@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Sweet Haven Bakery</title>
+  <meta name="description" content="Oops! The page you're looking for doesn't exist. Head back to Sweet Haven Bakery." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+</head>
+<body>
+
+  <!-- Navbar (minimal) -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">SH</span>
+        <span class="navbar__logo-text">
+          <strong>Sweet Haven</strong>
+          <small>Fresh from the Oven</small>
+        </span>
+      </a>
+      <nav class="navbar__links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="navbar__actions">
+        <button class="navbar__cart-btn" id="cartToggle" aria-label="Open cart">
+          🛒
+          <span class="navbar__cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 404 Content -->
+  <main class="not-found">
+    <div class="not-found__inner">
+      <div class="not-found__illustration" aria-hidden="true">
+        <div class="not-found__cake">🎂</div>
+        <div class="not-found__crumbs">
+          <span>✨</span><span>🍪</span><span>✨</span>
+        </div>
+      </div>
+
+      <h1 class="not-found__code">404</h1>
+      <h2 class="not-found__title">This page crumbled away.</h2>
+      <p class="not-found__sub">
+        Looks like this page didn't make it out of the oven — or maybe it was eaten.<br>
+        Don't worry, plenty of good things await you below.
+      </p>
+
+      <div class="not-found__actions">
+        <a href="../index.html" class="btn btn--primary">Back to Home</a>
+        <a href="shop.html" class="btn btn--outline">Browse the Shop</a>
+      </div>
+
+      <div class="not-found__suggestions">
+        <p>You might be looking for:</p>
+        <ul>
+          <li><a href="shop.html?cat=cakes">🎂 Our Cakes</a></li>
+          <li><a href="shop.html?cat=mithai">🍬 Indian Mithai</a></li>
+          <li><a href="checkout.html">🛒 Checkout</a></li>
+          <li><a href="track.html">📦 Track an Order</a></li>
+          <li><a href="contact.html">📞 Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="navbar__logo-mark">SH</span>
+        <p>Sweet Haven Bakery<br><small>Mumbai's favourite since 2018</small></p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <a href="../index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Categories</h4>
+        <a href="shop.html?cat=cakes">Cakes</a>
+        <a href="shop.html?cat=pastries">Pastries</a>
+        <a href="shop.html?cat=mithai">Indian Mithai</a>
+        <a href="shop.html?cat=breads">Breads</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <p>42 Linking Road, Bandra West<br>Mumbai 400050</p>
+        <a href="tel:+912235678900">+91 22 3567 8900</a>
+        <a href="mailto:hello@sweethaven.in">hello@sweethaven.in</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 Sweet Haven Bakery. Made with ❤️ in Mumbai.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/912235678900" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+  <!-- Cart Sidebar -->
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header">
+      <h3>Your Cart</h3>
+      <button onclick="closeCart()" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-sidebar__body" id="cartBody"></div>
+    <div class="cart-sidebar__footer" id="cartFooter"></div>
+  </aside>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>Cart.load();</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — Sweet Haven Bakery | Cakes, Pastries & Mithai</title>
+  <meta name="description" content="Browse our full menu of cakes, pastries, breads, cookies and Indian mithai. Filter by eggless, vegan, gluten-free and more.">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+<div class="seasonal-banner">
+  🌸 Holi Special: 20% off mithai! Code <strong>HOLI24</strong>
+  <button class="close-banner">✕</button>
+</div>
+
+<nav class="navbar">
+  <div class="navbar__inner">
+    <a href="../index.html" class="navbar__logo">
+      <span class="navbar__logo-name">Sweet Haven</span>
+      <span class="navbar__logo-tag">Fresh from the Oven</span>
+    </a>
+    <div class="navbar__links">
+      <a href="../index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="track.html">Track Order</a>
+    </div>
+    <div class="navbar__search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="shop-search" placeholder="Search products…">
+    </div>
+    <div class="navbar__actions">
+      <div class="navbar__location">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Mumbai
+      </div>
+      <button class="navbar__cart-btn" onclick="openCart()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge">0</span>
+      </button>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <a href="../index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="track.html">Track Order</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Our Menu</h1>
+  <p>Freshly baked daily — over 26 items across 6 categories</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="shop-layout">
+      <!-- Sidebar Filters -->
+      <aside class="filters-sidebar">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+          <div style="font-family:var(--font-display);font-size:18px;font-weight:500">Filters</div>
+          <button id="clear-filters" class="btn btn--ghost btn--sm" style="font-size:12px;padding:5px 10px">Clear all</button>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section__title">Category</div>
+          <label class="filter-check"><input type="checkbox" class="filter-category" value="Cakes"><span>Cakes</span></label>
+          <label class="filter-check"><input type="checkbox" class="filter-category" value="Pastries"><span>Pastries</span></label>
+          <label class="filter-check"><input type="checkbox" class="filter-category" value="Breads"><span>Breads</span></label>
+          <label class="filter-check"><input type="checkbox" class="filter-category" value="Cookies"><span>Cookies & Brownies</span></label>
+          <label class="filter-check"><input type="checkbox" class="filter-category" value="Indian Mithai"><span>Indian Mithai</span></label>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section__title">Dietary</div>
+          <label class="filter-check"><input type="checkbox" class="filter-tag" value="eggless"><span>Eggless</span></label>
+          <label class="filter-check"><input type="checkbox" class="filter-tag" value="vegan"><span>Vegan</span></label>
+          <label class="filter-check"><input type="checkbox" class="filter-tag" value="gluten-free"><span>Gluten-Free</span></label>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section__title">Price Range</div>
+          <div class="price-range">
+            <input type="range" id="price-max" min="50" max="2500" value="2500" step="50">
+            <div class="price-range__labels"><span>₹50</span><span id="price-max-label">₹2,500</span></div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-section__title">Sort By</div>
+          <select class="sort-select" id="sort-select">
+            <option value="popular">Most Popular</option>
+            <option value="rating">Top Rated</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+
+        <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px">
+          <button class="btn btn--swiggy btn--sm btn--full" onclick="openDeliveryModal('swiggy')">🛵 Order on Swiggy</button>
+          <button class="btn btn--zomato btn--sm btn--full" onclick="openDeliveryModal('zomato')">🍽 Order on Zomato</button>
+        </div>
+      </aside>
+
+      <!-- Product Grid -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <div class="product-count" id="product-count">Loading…</div>
+        </div>
+        <div class="product-grid" id="product-grid">
+          <!-- Skeleton loaders -->
+          ${Array(8).fill(0).map(() => `
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-img"></div>
+              <div class="skeleton-body">
+                <div class="skeleton skeleton-line skeleton-line--sm"></div>
+                <div class="skeleton skeleton-line skeleton-line--lg"></div>
+                <div class="skeleton skeleton-line" style="width:90%"></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/919876543210" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.855L.057 23.852a.5.5 0 0 0 .61.61l6.018-1.472A11.947 11.947 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.917 0-3.716-.511-5.267-1.402l-.375-.22-3.897.952.976-3.785-.24-.389A9.726 9.726 0 0 1 2.25 12 9.75 9.75 0 0 1 12 2.25 9.75 9.75 0 0 1 21.75 12 9.75 9.75 0 0 1 12 21.75z"/></svg>
+</a>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-sidebar__header">
+    <div class="cart-sidebar__title">Your Cart 🛒</div>
+    <button class="cart-sidebar__close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-sidebar__body" id="cart-body"></div>
+  <div class="cart-sidebar__footer" id="cart-footer"></div>
+</div>
+
+<!-- Quick View Modal -->
+<div class="modal-overlay" id="quick-view-overlay">
+  <div class="modal qv-modal">
+    <button class="modal__close-btn" onclick="closeModal('quick-view-overlay')">✕</button>
+    <div class="qv-modal__grid">
+      <div class="qv-modal__image-col"><img src="" alt="" style="width:100%;height:100%;min-height:350px;object-fit:cover"></div>
+      <div class="qv-modal__body"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Platform Modal -->
+<div class="modal-overlay" id="platform-overlay">
+  <div class="modal" style="max-width:400px"><div class="platform-modal"></div></div>
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/shop.js"></script>
+<script>Cart.load();</script>
+</body>
+</html>

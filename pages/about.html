@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story — Sweet Haven Bakery</title>
+  <meta name="description" content="Learn the story of Sweet Haven Bakery — Mumbai's artisan bakery founded in 2018 by Kavya Nair.">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar__inner">
+    <a href="../index.html" class="navbar__logo">
+      <span class="navbar__logo-name">Sweet Haven</span>
+      <span class="navbar__logo-tag">Fresh from the Oven</span>
+    </a>
+    <div class="navbar__links">
+      <a href="../index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="track.html">Track Order</a>
+    </div>
+    <div class="navbar__actions">
+      <button class="navbar__cart-btn" onclick="openCart()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge">0</span>
+      </button>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <a href="../index.html">Home</a><a href="shop.html">Shop</a>
+    <a href="about.html">About</a><a href="contact.html">Contact</a><a href="track.html">Track Order</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Our Story</h1>
+  <p>From a tiny home kitchen to Mumbai's most loved bakery</p>
+</div>
+
+<!-- Founder Story -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl);align-items:center" class="reveal">
+      <div>
+        <div class="section-label">Founded 2018</div>
+        <h2 class="section-title">A Dream Baked in Mumbai</h2>
+        <p style="color:var(--muted);font-size:16px;line-height:1.75;margin-top:16px">
+          Sweet Haven began in 2018 when Kavya Nair returned from Paris after training at Le Cordon Bleu. Armed with French technique and a deep love for Indian flavours, she set up a tiny kitchen in Bandra and started taking orders via WhatsApp.
+        </p>
+        <p style="color:var(--muted);font-size:16px;line-height:1.75;margin-top:14px">
+          Word spread fast. Her Gulab Jamun croissant — a fusion pastry that combined French lamination with rosewater-cardamom flavours — went viral on Instagram. Within six months, she had a waitlist of 200 customers.
+        </p>
+        <p style="color:var(--muted);font-size:16px;line-height:1.75;margin-top:14px">
+          Today, Sweet Haven is a 12-person team baking over 50 items daily, serving thousands of Mumbaikars who believe life is better with great bread and even better cake.
+        </p>
+        <div style="display:flex;gap:24px;margin-top:28px">
+          <div><div style="font-family:var(--font-display);font-size:30px;color:var(--honey)">6+</div><div style="font-size:13px;color:var(--muted)">Years of Baking</div></div>
+          <div><div style="font-family:var(--font-display);font-size:30px;color:var(--honey)">12K+</div><div style="font-size:13px;color:var(--muted)">Happy Customers</div></div>
+          <div><div style="font-family:var(--font-display);font-size:30px;color:var(--honey)">50+</div><div style="font-size:13px;color:var(--muted)">Daily Items</div></div>
+        </div>
+      </div>
+      <div style="position:relative">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80" alt="Founder" style="width:100%;border-radius:var(--r-xl);aspect-ratio:4/5;object-fit:cover">
+        <div style="position:absolute;bottom:-20px;left:-20px;background:#fff;padding:18px 22px;border-radius:var(--r-lg);box-shadow:var(--shadow-lg);border:1px solid var(--border)">
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:500">Kavya Nair</div>
+          <div style="font-size:12px;color:var(--honey-dark)">Founder & Head Pastry Chef</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">Le Cordon Bleu, Paris · 2017</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bakery Interior -->
+<section class="section--sm" style="background:var(--cream-dark)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px" class="reveal">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&q=75" alt="Bakery" style="border-radius:var(--r-lg);width:100%;height:220px;object-fit:cover">
+      <img src="https://images.unsplash.com/photo-1571167530149-c1105da4c2c0?w=500&q=75" alt="Pastries" style="border-radius:var(--r-lg);width:100%;height:220px;object-fit:cover">
+      <img src="https://images.unsplash.com/photo-1577998474517-7eeeed4e448a?w=500&q=75" alt="Team" style="border-radius:var(--r-lg);width:100%;height:220px;object-fit:cover">
+    </div>
+  </div>
+</section>
+
+<!-- Meet the Team -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <div class="section-label">The People</div>
+      <h2 class="section-title">Meet Our Bakers</h2>
+      <p class="section-sub">Four dedicated artisans who wake up before dawn so you can have the freshest baked goods in Mumbai.</p>
+    </div>
+    <div class="team-grid" id="team-grid"></div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="section" style="background:var(--espresso)">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <div class="section-label" style="color:var(--gold-light)">Our Values</div>
+      <h2 class="section-title" style="color:var(--cream)">What We Stand For</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal" style="background:rgba(253,246,238,0.06)">
+        <div class="value-card__icon">🌾</div>
+        <div class="value-card__title" style="color:var(--gold-light)">Quality First</div>
+        <div class="value-card__desc" style="color:rgba(253,246,238,0.6)">We never compromise on ingredients. Belgian chocolate, organic dairy, fresh fruit — every item, every day.</div>
+      </div>
+      <div class="value-card reveal reveal--delay-1" style="background:rgba(253,246,238,0.06)">
+        <div class="value-card__icon">🌱</div>
+        <div class="value-card__title" style="color:var(--gold-light)">Inclusivity</div>
+        <div class="value-card__desc" style="color:rgba(253,246,238,0.6)">We believe everyone deserves great baked goods. We offer an extensive eggless and vegan range without compromise.</div>
+      </div>
+      <div class="value-card reveal reveal--delay-2" style="background:rgba(253,246,238,0.06)">
+        <div class="value-card__icon">🤝</div>
+        <div class="value-card__title" style="color:var(--gold-light)">Community</div>
+        <div class="value-card__desc" style="color:rgba(253,246,238,0.6)">We source locally, hire locally, and donate unsold items to NGOs each evening. Mumbai made us; we give back.</div>
+      </div>
+      <div class="value-card reveal reveal--delay-3" style="background:rgba(253,246,238,0.06)">
+        <div class="value-card__icon">✨</div>
+        <div class="value-card__title" style="color:var(--gold-light)">Craft & Joy</div>
+        <div class="value-card__desc" style="color:rgba(253,246,238,0.6)">Baking is a form of love. Every item we make carries the joy of the baker who made it — and we want you to feel that.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.855L.057 23.852a.5.5 0 0 0 .61.61l6.018-1.472A11.947 11.947 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.917 0-3.716-.511-5.267-1.402l-.375-.22-3.897.952.976-3.785-.24-.389A9.726 9.726 0 0 1 2.25 12 9.75 9.75 0 0 1 12 2.25 9.75 9.75 0 0 1 21.75 12 9.75 9.75 0 0 1 12 21.75z"/></svg>
+</a>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-sidebar__header">
+    <div class="cart-sidebar__title">Your Cart 🛒</div>
+    <button class="cart-sidebar__close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-sidebar__body" id="cart-body"></div>
+  <div class="cart-sidebar__footer" id="cart-footer"></div>
+</div>
+
+<!-- Platform Modal -->
+<div class="modal-overlay" id="platform-overlay">
+  <div class="modal" style="max-width:400px"><div class="platform-modal"></div></div>
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/ui.js"></script>
+<script>
+Cart.load();
+document.getElementById('team-grid').innerHTML = TEAM.map(m => `
+  <div class="team-card reveal">
+    <img class="team-card__img" src="${m.avatar}" alt="${m.name}">
+    <div class="team-card__name">${m.name}</div>
+    <div class="team-card__role">${m.role}</div>
+    <div class="team-card__bio">${m.bio}</div>
+  </div>`).join('');
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>

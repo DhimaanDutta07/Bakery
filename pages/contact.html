@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Sweet Haven Bakery</title>
+  <meta name="description" content="Get in touch with Sweet Haven Bakery. Reach us for custom orders, catering, feedback, or any inquiry." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+</head>
+<body>
+
+  <!-- Seasonal Banner -->
+  <div class="seasonal-banner" id="seasonalBanner">
+    <span>🌸 Spring Special: 20% off custom cakes this week — use code <strong>SPRING20</strong></span>
+    <button class="seasonal-banner__close" onclick="document.getElementById('seasonalBanner').style.display='none'" aria-label="Close banner">✕</button>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">SH</span>
+        <span class="navbar__logo-text">
+          <strong>Sweet Haven</strong>
+          <small>Fresh from the Oven</small>
+        </span>
+      </a>
+      <nav class="navbar__links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="track.html">Track Order</a>
+      </nav>
+      <div class="navbar__actions">
+        <button class="navbar__cart-btn" id="cartToggle" aria-label="Open cart">
+          🛒
+          <span class="navbar__cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&auto=format&fit=crop')">
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content reveal">
+      <p class="section-label" style="color:var(--rose)">Get In Touch</p>
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you — custom orders, catering, or just saying hello.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="contact-layout">
+
+    <!-- Contact Info Column -->
+    <aside class="contact-info reveal">
+      <h2>Let's Talk</h2>
+      <p class="contact-info__sub">Whether it's a wedding cake or a quick question, we're always happy to connect.</p>
+
+      <ul class="contact-details">
+        <li>
+          <span class="contact-details__icon">📍</span>
+          <div>
+            <strong>Visit Us</strong>
+            <p>42, Linking Road, Bandra West<br>Mumbai, Maharashtra 400050</p>
+          </div>
+        </li>
+        <li>
+          <span class="contact-details__icon">📞</span>
+          <div>
+            <strong>Call Us</strong>
+            <p><a href="tel:+912235678900">+91 22 3567 8900</a></p>
+          </div>
+        </li>
+        <li>
+          <span class="contact-details__icon">✉️</span>
+          <div>
+            <strong>Email Us</strong>
+            <p><a href="mailto:hello@sweethaven.in">hello@sweethaven.in</a></p>
+          </div>
+        </li>
+        <li>
+          <span class="contact-details__icon">🕐</span>
+          <div>
+            <strong>Opening Hours</strong>
+            <p>Mon – Sat: 7 AM – 9 PM<br>Sunday: 8 AM – 7 PM</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="contact-social">
+        <a href="#" class="contact-social__link" aria-label="Instagram">📸 Instagram</a>
+        <a href="#" class="contact-social__link" aria-label="Facebook">📘 Facebook</a>
+        <a href="https://wa.me/912235678900" class="contact-social__link" aria-label="WhatsApp">💬 WhatsApp</a>
+      </div>
+
+      <!-- Map Embed -->
+      <div class="contact-map reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.4440013218755!2d72.82772!3d19.05896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9143b6ad4e1%3A0x2e6c1d6f2e62b8a!2sBandra%20West%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          width="100%"
+          height="260"
+          style="border:0;border-radius:var(--radius-lg)"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Sweet Haven Bakery location map"
+        ></iframe>
+      </div>
+    </aside>
+
+    <!-- Contact Form -->
+    <section class="contact-form-wrap reveal">
+      <h2>Send a Message</h2>
+      <p class="contact-form-wrap__sub">Fill in the form and we'll respond within one business day.</p>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">Full Name *</label>
+            <input type="text" id="cf-name" placeholder="Priya Sharma" autocomplete="name" />
+            <span class="form-error" id="err-name"></span>
+          </div>
+          <div class="form-group">
+            <label for="cf-phone">Phone Number</label>
+            <input type="tel" id="cf-phone" placeholder="+91 98765 43210" autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-email">Email Address *</label>
+          <input type="email" id="cf-email" placeholder="priya@example.com" autocomplete="email" />
+          <span class="form-error" id="err-email"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-type">Inquiry Type *</label>
+          <select id="cf-type">
+            <option value="">— Select type —</option>
+            <option value="order">Custom Order / Cake Design</option>
+            <option value="catering">Catering &amp; Events</option>
+            <option value="feedback">Feedback &amp; Reviews</option>
+            <option value="wholesale">Wholesale / Partnership</option>
+            <option value="other">Other</option>
+          </select>
+          <span class="form-error" id="err-type"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-message">Your Message *</label>
+          <textarea id="cf-message" rows="5" placeholder="Tell us about your order, event, or question..."></textarea>
+          <span class="form-error" id="err-message"></span>
+        </div>
+
+        <div class="form-group form-group--checkbox">
+          <input type="checkbox" id="cf-consent" />
+          <label for="cf-consent">I agree to be contacted by Sweet Haven Bakery regarding my inquiry.</label>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--full" id="cfSubmitBtn">
+          Send Message
+        </button>
+      </form>
+
+      <!-- Success State -->
+      <div class="contact-success" id="contactSuccess" style="display:none">
+        <div class="contact-success__icon">✉️</div>
+        <h3>Message Sent!</h3>
+        <p>Thank you for reaching out. We'll get back to you within one business day.<br>In a hurry? Call us at <a href="tel:+912235678900">+91 22 3567 8900</a>.</p>
+        <button class="btn btn--outline" onclick="resetContactForm()">Send Another</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="navbar__logo-mark">SH</span>
+        <p>Sweet Haven Bakery<br><small>Mumbai's favourite since 2018</small></p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <a href="../index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Categories</h4>
+        <a href="shop.html?cat=cakes">Cakes</a>
+        <a href="shop.html?cat=pastries">Pastries</a>
+        <a href="shop.html?cat=mithai">Indian Mithai</a>
+        <a href="shop.html?cat=breads">Breads</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <p>42 Linking Road, Bandra West<br>Mumbai 400050</p>
+        <a href="tel:+912235678900">+91 22 3567 8900</a>
+        <a href="mailto:hello@sweethaven.in">hello@sweethaven.in</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 Sweet Haven Bakery. Made with ❤️ in Mumbai.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/912235678900" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+  <!-- Cart Sidebar -->
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header">
+      <h3>Your Cart</h3>
+      <button onclick="closeCart()" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-sidebar__body" id="cartBody"></div>
+    <div class="cart-sidebar__footer" id="cartFooter"></div>
+  </aside>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    Cart.load();
+
+    /* ── Contact Form ── */
+    const contactForm = document.getElementById('contactForm');
+    const contactSuccess = document.getElementById('contactSuccess');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validateContactForm()) return;
+
+      const btn = document.getElementById('cfSubmitBtn');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        contactForm.style.display = 'none';
+        contactSuccess.style.display = 'flex';
+        Toast.show('Message sent successfully! We\'ll be in touch soon.', 'success');
+      }, 1200);
+    });
+
+    function validateContactForm() {
+      let valid = true;
+
+      const name = document.getElementById('cf-name').value.trim();
+      const email = document.getElementById('cf-email').value.trim();
+      const type = document.getElementById('cf-type').value;
+      const message = document.getElementById('cf-message').value.trim();
+
+      document.getElementById('err-name').textContent = '';
+      document.getElementById('err-email').textContent = '';
+      document.getElementById('err-type').textContent = '';
+      document.getElementById('err-message').textContent = '';
+
+      if (!name) { document.getElementById('err-name').textContent = 'Name is required.'; valid = false; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('err-email').textContent = 'Enter a valid email.'; valid = false; }
+      if (!type) { document.getElementById('err-type').textContent = 'Please select an inquiry type.'; valid = false; }
+      if (!message || message.length < 10) { document.getElementById('err-message').textContent = 'Please write at least 10 characters.'; valid = false; }
+
+      return valid;
+    }
+
+    function resetContactForm() {
+      contactForm.reset();
+      contactForm.style.display = 'block';
+      contactSuccess.style.display = 'none';
+      document.getElementById('cfSubmitBtn').textContent = 'Send Message';
+      document.getElementById('cfSubmitBtn').disabled = false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Your Order — Sweet Haven Bakery</title>
+  <meta name="description" content="Track your Sweet Haven Bakery order in real time. Enter your order ID to see live status updates." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+</head>
+<body>
+
+  <!-- Seasonal Banner -->
+  <div class="seasonal-banner" id="seasonalBanner">
+    <span>🌸 Spring Special: 20% off custom cakes this week — use code <strong>SPRING20</strong></span>
+    <button class="seasonal-banner__close" onclick="document.getElementById('seasonalBanner').style.display='none'" aria-label="Close banner">✕</button>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">SH</span>
+        <span class="navbar__logo-text">
+          <strong>Sweet Haven</strong>
+          <small>Fresh from the Oven</small>
+        </span>
+      </a>
+      <nav class="navbar__links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="track.html" class="active">Track Order</a>
+      </nav>
+      <div class="navbar__actions">
+        <button class="navbar__cart-btn" id="cartToggle" aria-label="Open cart">
+          🛒
+          <span class="navbar__cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=1400&auto=format&fit=crop')">
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content reveal">
+      <p class="section-label" style="color:var(--rose)">Order Status</p>
+      <h1>Track Your Order</h1>
+      <p>Enter your order ID to see real-time status updates.</p>
+    </div>
+  </section>
+
+  <!-- Track Section -->
+  <section class="track-section">
+
+    <!-- Search Form -->
+    <div class="track-search-wrap reveal">
+      <div class="track-search">
+        <h2>Find Your Order</h2>
+        <p>Your order ID was sent to your email and SMS after placing the order.</p>
+        <div class="track-input-row">
+          <input
+            type="text"
+            id="trackInput"
+            placeholder="e.g. SH-2024-00712"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="btn btn--primary" id="trackBtn" onclick="handleTrack()">Track</button>
+        </div>
+        <p class="track-hint">Try: <button class="track-demo-btn" onclick="demoTrack('SH-2024-00712')">SH-2024-00712</button> or <button class="track-demo-btn" onclick="demoTrack('SH-2024-00305')">SH-2024-00305</button></p>
+      </div>
+    </div>
+
+    <!-- Results (hidden initially) -->
+    <div class="track-results" id="trackResults" style="display:none">
+
+      <!-- Order Summary Card -->
+      <div class="track-summary-card reveal">
+        <div class="track-summary-card__left">
+          <p class="section-label">Order ID</p>
+          <h3 id="trOrderId">—</h3>
+          <p id="trOrderDate" class="track-summary-card__date"></p>
+        </div>
+        <div class="track-summary-card__right">
+          <span class="badge" id="trStatusBadge">Processing</span>
+          <p id="trEta" class="track-summary-card__eta"></p>
+        </div>
+      </div>
+
+      <!-- Progress Steps -->
+      <div class="track-steps-wrap reveal">
+        <ol class="track-steps" id="trackSteps"></ol>
+      </div>
+
+      <!-- Delivery Details -->
+      <div class="track-delivery-card reveal" id="trackDeliveryCard">
+        <h4>Delivery Details</h4>
+        <div class="track-delivery-card__grid" id="trackDeliveryGrid"></div>
+      </div>
+
+      <!-- Items -->
+      <div class="track-items-card reveal" id="trackItemsCard">
+        <h4>Items in this Order</h4>
+        <ul class="track-items-list" id="trackItemsList"></ul>
+      </div>
+
+      <!-- Actions -->
+      <div class="track-actions reveal">
+        <button class="btn btn--outline" onclick="resetTrack()">Track Another Order</button>
+        <a href="shop.html" class="btn btn--primary">Continue Shopping</a>
+      </div>
+
+    </div>
+
+    <!-- Not Found State -->
+    <div class="track-not-found" id="trackNotFound" style="display:none">
+      <div class="track-not-found__icon">🔍</div>
+      <h3>Order Not Found</h3>
+      <p>We couldn't find an order with that ID. Please double-check and try again, or <a href="contact.html">contact us</a>.</p>
+      <button class="btn btn--outline" onclick="resetTrack()">Try Again</button>
+    </div>
+
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section class="track-faq reveal">
+    <div class="section-heading">
+      <p class="section-label">Questions?</p>
+      <h2>Order &amp; Delivery FAQs</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How long does delivery take?</summary>
+        <p>Standard delivery takes 30–45 minutes within 5 km of our Bandra store. For areas further away, expect 45–75 minutes. Custom cakes require 24-hour advance notice.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I change or cancel my order?</summary>
+        <p>Orders can be modified or cancelled within 15 minutes of placing. After that, we may have already started preparing your items. Please call us immediately at +91 22 3567 8900.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if my order arrives damaged?</summary>
+        <p>We take great care in packaging, but if your order arrives damaged, please take a photo and WhatsApp it to us within 2 hours of delivery. We'll send a replacement or issue a full refund.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you deliver outside Mumbai?</summary>
+        <p>Currently we deliver within Mumbai only. For outstation orders, we ship dry items like cookies, nankhatai, and mithai via courier — please contact us for details.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How can I order on Swiggy or Zomato?</summary>
+        <p>Search for "Sweet Haven Bakery" on Swiggy or Zomato and place your order directly through the app. Delivery times and prices may vary slightly on those platforms.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="navbar__logo-mark">SH</span>
+        <p>Sweet Haven Bakery<br><small>Mumbai's favourite since 2018</small></p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <a href="../index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Categories</h4>
+        <a href="shop.html?cat=cakes">Cakes</a>
+        <a href="shop.html?cat=pastries">Pastries</a>
+        <a href="shop.html?cat=mithai">Indian Mithai</a>
+        <a href="shop.html?cat=breads">Breads</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <p>42 Linking Road, Bandra West<br>Mumbai 400050</p>
+        <a href="tel:+912235678900">+91 22 3567 8900</a>
+        <a href="mailto:hello@sweethaven.in">hello@sweethaven.in</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 Sweet Haven Bakery. Made with ❤️ in Mumbai.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/912235678900" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+  <!-- Cart Sidebar -->
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header">
+      <h3>Your Cart</h3>
+      <button onclick="closeCart()" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-sidebar__body" id="cartBody"></div>
+    <div class="cart-sidebar__footer" id="cartFooter"></div>
+  </aside>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/track.js"></script>
+  <script>
+    Cart.load();
+
+    /* ── Enter key triggers track ── */
+    document.getElementById('trackInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleTrack();
+    });
+
+    function handleTrack() {
+      const val = document.getElementById('trackInput').value.trim().toUpperCase();
+      if (!val) {
+        Toast.show('Please enter an order ID.', 'error');
+        document.getElementById('trackInput').focus();
+        return;
+      }
+      runTrack(val);
+    }
+
+    function demoTrack(id) {
+      document.getElementById('trackInput').value = id;
+      runTrack(id);
+    }
+
+    function runTrack(orderId) {
+      const btn = document.getElementById('trackBtn');
+      btn.textContent = 'Searching…';
+      btn.disabled = true;
+
+      document.getElementById('trackResults').style.display = 'none';
+      document.getElementById('trackNotFound').style.display = 'none';
+
+      setTimeout(() => {
+        btn.textContent = 'Track';
+        btn.disabled = false;
+
+        /* Validate format loosely */
+        if (!/^SH-\d{4}-\d{4,6}$/.test(orderId)) {
+          document.getElementById('trackNotFound').style.display = 'block';
+          document.getElementById('trackNotFound').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
+
+        renderTrackResult(orderId);
+        document.getElementById('trackResults').style.display = 'block';
+        document.getElementById('trackResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 900);
+    }
+
+    function resetTrack() {
+      document.getElementById('trackInput').value = '';
+      document.getElementById('trackResults').style.display = 'none';
+      document.getElementById('trackNotFound').style.display = 'none';
+      document.getElementById('trackInput').focus();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderTrackResult(orderId) {
+      /* Derive a deterministic step from the order number */
+      const num = parseInt(orderId.replace(/\D/g, ''), 10) || 0;
+      const stepIndex = num % 5; // 0–4
+
+      const statuses = [
+        { label: 'Order Placed', icon: '📋', time: '10 mins ago', done: true },
+        { label: 'Confirmed', icon: '✅', time: '8 mins ago', done: stepIndex >= 1 },
+        { label: 'Being Prepared', icon: '👨‍🍳', time: stepIndex >= 2 ? '5 mins ago' : 'Pending', done: stepIndex >= 2 },
+        { label: 'Out for Delivery', icon: '🛵', time: stepIndex >= 3 ? '2 mins ago' : 'Pending', done: stepIndex >= 3 },
+        { label: 'Delivered', icon: '🎉', time: stepIndex >= 4 ? 'Just now' : 'Pending', done: stepIndex >= 4 },
+      ];
+
+      const currentStatus = statuses[stepIndex].label;
+      const statusColors = ['honey', 'honey', 'rose', 'rose', 'sage'];
+
+      /* Badge */
+      const badge = document.getElementById('trStatusBadge');
+      badge.textContent = currentStatus;
+      badge.className = `badge badge--${statusColors[stepIndex]}`;
+
+      /* Order ID + Date */
+      document.getElementById('trOrderId').textContent = orderId;
+      document.getElementById('trOrderDate').textContent = 'Placed on ' + new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+
+      /* ETA */
+      const etas = ['~35 min', '~30 min', '~20 min', '~8 min', 'Delivered!'];
+      document.getElementById('trEta').textContent = stepIndex < 4 ? `Estimated arrival: ${etas[stepIndex]}` : '🎉 Your order has been delivered!';
+
+      /* Steps */
+      const ol = document.getElementById('trackSteps');
+      ol.innerHTML = statuses.map((s, i) => `
+        <li class="track-step ${s.done ? 'track-step--done' : ''} ${i === stepIndex ? 'track-step--active' : ''}">
+          <span class="track-step__icon">${s.icon}</span>
+          <div class="track-step__body">
+            <strong>${s.label}</strong>
+            <span>${s.time}</span>
+          </div>
+        </li>
+      `).join('');
+
+      /* Delivery details */
+      document.getElementById('trackDeliveryGrid').innerHTML = `
+        <div><strong>Delivery Address</strong><p>42, Linking Road, Bandra West, Mumbai</p></div>
+        <div><strong>Delivery Agent</strong><p>${stepIndex >= 3 ? 'Raju Kumar — ⭐ 4.8' : 'Not yet assigned'}</p></div>
+        <div><strong>Payment</strong><p>UPI — ₹${349 + num % 500}</p></div>
+        <div><strong>Order Type</strong><p>Home Delivery</p></div>
+      `;
+
+      /* Items (fake 2 items) */
+      const sampleItems = [
+        { name: 'Chocolate Truffle Cake', qty: 1, price: 649 },
+        { name: 'Butter Croissant', qty: 2, price: 89 },
+      ];
+      document.getElementById('trackItemsList').innerHTML = sampleItems.map(item => `
+        <li class="track-item">
+          <span class="track-item__name">${item.name} <em>× ${item.qty}</em></span>
+          <span class="track-item__price">₹${item.price * item.qty}</span>
+        </li>
+      `).join('') + `<li class="track-item track-item--total"><span>Total (incl. delivery + GST)</span><span>₹${sampleItems.reduce((a,b)=>a+b.price*b.qty,0)+49}</span></li>`;
+    }
+  </script>
+</body>
+</html>
